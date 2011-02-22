@@ -38,7 +38,14 @@
     <packaging>jar</packaging>
 
     <name>JBoss Application Server: Web Subsystem</name>
-
+    <properties>
+<log4j.version>1.2.14</log4j.version>
+		<junit.version>4.1</junit.version>
+		<jain-sip-api.version>1.2</jain-sip-api.version>
+		<jain-sip-ri.version>1.2.160</jain-sip-ri.version>
+		<mobicents.balancer.version>1.1-SNAPSHOT</mobicents.balancer.version>
+		<mobicents.jain.sip.ext.version>1.0.BETA1</mobicents.jain.sip.ext.version>
+		</properties>
     <build>
         <plugins>
             <plugin>
@@ -120,6 +127,100 @@
        <groupId>org.picketbox</groupId>
        <artifactId>picketbox</artifactId>
     </dependency>
+    
+    
+    
+    <dependency>
+			<groupId>javax.sip</groupId>
+			<artifactId>jain-sip-api</artifactId>
+			<version>${jain-sip-api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+       <groupId>org.jboss.spec.javax.servlet</groupId>
+       <artifactId>jboss-servlet-api_3.0_spec</artifactId>
+       <version>1.0.0.Beta2</version>
+    </dependency>
+       
+       <dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>javax.sip</groupId>
+			<artifactId>jain-sip-ri</artifactId>
+			<version>${jain-sip-ri.version}</version>
+			<scope>provided</scope>
+		</dependency>
+	
+		<dependency>
+			<groupId>org.mobicents.servlet.sip</groupId>
+			<artifactId>sip-servlets-impl</artifactId>
+			<version>2.0.0-SNAPSHOT</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		
+		<dependency>
+			<groupId>org.mobicents.servlet.sip</groupId>
+			<artifactId>sip-servlets-spec</artifactId>
+			<version>2.0.0-SNAPSHOT</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.mobicents.servlet.sip</groupId>
+			<artifactId>sip-servlets-annotations</artifactId>
+			<version>2.0.0-SNAPSHOT</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		
+		<dependency>
+			<groupId>org.mobicents.servlet.sip</groupId>
+			<artifactId>sip-servlets-jruby</artifactId>
+			<version>2.0.0-SNAPSHOT</version>	
+			<scope>provided</scope>		
+		</dependency>
+				
+	   
+	    <dependency>
+       		<groupId>org.jboss.web</groupId>
+       		<artifactId>jasper-jdt</artifactId>
+       		<version>7.0.0.Beta2</version>
+    	</dependency>
+	
+	    <dependency>
+	       <groupId>org.jboss.web</groupId>
+	       <artifactId>jbossweb</artifactId>
+	       <version>7.0.0.Beta2</version>
+	    </dependency>
+			
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.2</version>
+			<scope>provided</scope>
+		</dependency>		
+		
+					
+				<dependency>
+					<groupId>org.mobicents.tools</groupId>
+					<artifactId>sip-balancer-jar</artifactId>
+					<version>${mobicents.balancer.version}</version>
+					<scope>provided</scope>
+				</dependency>
+				
+				<dependency>			
+			<groupId>org.mobicents.javax.sip</groupId>
+			<artifactId>mobicents-jain-sip-ext</artifactId>
+			<version>${mobicents.jain.sip.ext.version}</version>
+			<scope>provided</scope>
+		</dependency>
 
  </dependencies>
 </project>
