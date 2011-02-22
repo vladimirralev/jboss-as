@@ -38,6 +38,8 @@ import org.jboss.msc.service.StartContext;
 import org.jboss.msc.service.StartException;
 import org.jboss.msc.service.StopContext;
 import org.jboss.msc.value.InjectedValue;
+import org.mobicents.servlet.sip.startup.SipStandardEngine;
+import org.mobicents.servlet.sip.startup.SipStandardService;
 
 /**
  * Service configuring and starting the web container.
@@ -79,12 +81,12 @@ class WebServerService implements WebServer, Service<WebServer> {
         final StandardServer server = new StandardServer();
         catalina.setServer(server);
 
-        final StandardService service = new StandardService();
+        final SipStandardService service = new SipStandardService();
         service.setName(JBOSS_WEB);
         service.setServer(server);
         server.addService(service);
 
-        final Engine engine = new StandardEngine();
+        final Engine engine = new SipStandardEngine();
         engine.setName(JBOSS_WEB);
         engine.setService(service);
         engine.setDefaultHost(defaultHost);
