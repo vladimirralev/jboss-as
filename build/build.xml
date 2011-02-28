@@ -80,6 +80,10 @@
             <maven-resource group="com.sun.httpserver" artifact="httpserver"/>
         </module-def>
 
+        <module-def name="com.sun.jsf-impl">
+            <maven-resource group="com.sun.faces" artifact="jsf-impl"/>
+        </module-def>
+
         <module-def name="com.sun.xml.bind">
             <maven-resource group="com.sun.xml.bind" artifact="jaxb-impl"/>
             <maven-resource group="com.sun.xml.bind" artifact="jaxb-xjc"/>
@@ -118,7 +122,7 @@
         </module-def>
 
         <module-def name="javax.faces.api">
-            <maven-resource group="javax.faces" artifact="jsf-api"/>
+            <maven-resource group="com.sun.faces" artifact="jsf-api"/>
         </module-def>
 
         <module-def name="javax.inject.api">
@@ -161,6 +165,10 @@
             <maven-resource group="org.jboss.spec.javax.servlet.jsp" artifact="jboss-jsp-api_2.2_spec"/>
         </module-def>
 
+        <module-def name="javax.servlet.jstl">
+            <maven-resource group="javax.servlet" artifact="jstl"/>
+        </module-def>
+
         <module-def name="javax.transaction.api">
             <maven-resource group="org.jboss.spec.javax.transaction" artifact="jboss-transaction-api_1.1_spec"/>
         </module-def>
@@ -193,6 +201,10 @@
 
         <module-def name="javax.xml.ws.api">
             <maven-resource group="org.jboss.spec.javax.xml.ws" artifact="jboss-jaxws-api_2.2_spec"/>
+        </module-def>
+
+        <module-def name="jline.jline">
+            <maven-resource group="jline" artifact="jline"/>
         </module-def>
 
         <module-def name="junit.junit">
@@ -329,6 +341,10 @@
             <maven-resource group="org.jboss.as" artifact="jboss-as-arquillian-service"/>
         </module-def>
 
+        <module-def name="org.jboss.as.cli">
+            <maven-resource group="org.jboss.as" artifact="jboss-as-cli"/>
+        </module-def>
+
         <module-def name="org.jboss.as.connector">
             <maven-resource group="org.jboss.as" artifact="jboss-as-connector"/>
         </module-def>
@@ -371,6 +387,10 @@
 
         <module-def name="org.jboss.as.host-controller">
             <maven-resource group="org.jboss.as" artifact="jboss-as-host-controller"/>
+        </module-def>
+
+        <module-def name="org.jboss.as.jaxrs">
+            <maven-resource group="org.jboss.as" artifact="jboss-as-jaxrs"/>
         </module-def>
 
         <module-def name="org.jboss.as.jmx">
@@ -580,10 +600,18 @@
         <module-def name="org.jboss.remoting3">
             <maven-resource group="org.jboss.remoting3" artifact="jboss-remoting"/>
         </module-def>
-        
-        <module-def name="org.jboss.threads">
-            <maven-resource group="org.jboss.threads" artifact="jboss-threads"/>
-        </module-def>
+
+    	<module-def name="org.jboss.resteasy.async-http-servlet-30">
+    	    <maven-resource group="org.jboss.resteasy" artifact="async-http-servlet-3.0"/>
+    	</module-def>
+
+    	<module-def name="org.jboss.resteasy.resteasy-jaxrs" >
+    	    <maven-resource group="org.jboss.resteasy" artifact="resteasy-jaxrs" jandex="true"/>
+    	</module-def>
+
+    	<module-def name="org.jboss.resteasy.resteasy-cdi">
+    	    <maven-resource group="org.jboss.resteasy" artifact="resteasy-cdi"/>
+    	</module-def>
 
         <module-def name="org.jboss.shrinkwrap.api">
             <maven-resource group="org.jboss.shrinkwrap" artifact="shrinkwrap-api"/>
@@ -605,6 +633,10 @@
 
         <module-def name="org.jboss.stdio">
             <maven-resource group="org.jboss.stdio" artifact="jboss-stdio"/>
+        </module-def>
+
+        <module-def name="org.jboss.threads">
+            <maven-resource group="org.jboss.threads" artifact="jboss-threads"/>
         </module-def>
 
         <module-def name="org.jboss.xnio.nio">
@@ -631,10 +663,6 @@
             <maven-resource group="org.jboss.ws" artifact="jbossws-common"/>
         </module-def>
 
-        <module-def name="org.jboss.ws.cxf.jbossws-cxf-client">
-            <maven-resource group="org.jboss.ws.cxf" artifact="jbossws-cxf-client"/>
-        </module-def>
-
         <module-def name="org.jboss.ws.cxf.jbossws-cxf-factories">
             <maven-resource group="org.jboss.ws.cxf" artifact="jbossws-cxf-factories"/>
         </module-def>
@@ -645,6 +673,14 @@
 
         <module-def name="org.jboss.ws.cxf.jbossws-cxf-transports-httpserver">
             <maven-resource group="org.jboss.ws.cxf" artifact="jbossws-cxf-transports-httpserver"/>
+        </module-def>
+
+        <module-def name="org.jboss.ws.jaxws-client">
+            <maven-resource group="org.jboss.ws.cxf" artifact="jbossws-cxf-client"/>
+        </module-def>
+
+        <module-def name="org.jboss.ws.jaxws-httpserver-httpspi">
+            <maven-resource group="org.jboss.ws.projects" artifact="jaxws-httpserver-httpspi"/>
         </module-def>
 
         <module-def name="org.jboss.ws.api">
@@ -677,6 +713,10 @@
 
         <module-def name="org.slf4j.jcl-over-slf4j">
             <maven-resource group="org.slf4j" artifact="jcl-over-slf4j"/>
+        </module-def>
+
+        <module-def name="org.scannotation.scannotation">
+            <maven-resource group="org.scannotation" artifact="scannotation"/>
         </module-def>
 
         <module-def name="org.slf4j">

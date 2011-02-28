@@ -59,13 +59,15 @@
         <version.com.sun.httpserver>20100812-JBoss</version.com.sun.httpserver>
         <version.javax.activation.activation>1.1.1</version.javax.activation.activation>
         <version.javax.enterprise.cdi-api>1.0-SP4</version.javax.enterprise.cdi-api>
-        <version.javax.faces.jsf-api>2.0.2-FCS</version.javax.faces.jsf-api>
+        <version.javax.faces.jsf-api>2.0.4-b09</version.javax.faces.jsf-api>
         <version.javax.inject.javax.inject>1</version.javax.inject.javax.inject>
         <version.javax.jws.jsr181-api>1.0-MR1</version.javax.jws.jsr181-api>
         <version.javax.mail.mail>1.4.2</version.javax.mail.mail>
+        <version.javax.servlet.jstl>1.2</version.javax.servlet.jstl>
         <version.javax.validation.validation-api>1.0.0.GA</version.javax.validation.validation-api>
-        <version.javax.ws.rs.jsr311-api>1.0</version.javax.ws.rs.jsr311-api>
+        <version.javax.ws.rs.jsr311-api>1.1.1</version.javax.ws.rs.jsr311-api>
         <version.javax.xml.jaxrpc-api>1.1</version.javax.xml.jaxrpc-api>
+        <version.jline>0.9.94</version.jline>
         <version.junit>4.8.1</version.junit>
         <version.log4j.log4j>1.2.16</version.log4j.log4j>
         <version.org.apache.aries.jmx>0.1-incubating</version.org.apache.aries.jmx>
@@ -90,7 +92,7 @@
         <version.org.jboss.interceptor>2.0.0.Alpha3</version.org.jboss.interceptor>
         <version.org.jboss.invocaton>1.0.0.Beta2</version.org.jboss.invocaton>
         <version.org.jboss.ironjacamar>1.0.0.Beta3</version.org.jboss.ironjacamar>
-        <version.org.jboss.jandex>1.0.0.Beta4</version.org.jboss.jandex>
+        <version.org.jboss.jandex>1.0.0.Beta6</version.org.jboss.jandex>
         <version.org.jboss.jboss-common-core>2.2.17.GA</version.org.jboss.jboss-common-core>
         <version.org.jboss.jboss-dmr>1.0.0.Beta3</version.org.jboss.jboss-dmr>
         <version.org.jboss.jbossts.jbossjts>4.11.0.Final</version.org.jboss.jbossts.jbossjts>
@@ -101,9 +103,9 @@
         <version.org.jboss.logmanager.jboss-logmanager-log4j>1.0.0.CR3</version.org.jboss.logmanager.jboss-logmanager-log4j>
         <version.org.jboss.marshalling.jboss-marshalling>1.3.0.CR8</version.org.jboss.marshalling.jboss-marshalling>
         <version.org.jboss.marshalling.jboss-marshalling-river>1.3.0.CR8</version.org.jboss.marshalling.jboss-marshalling-river>
-        <version.org.jboss.metadata.common>7.0.0.Alpha5</version.org.jboss.metadata.common>
-        <version.org.jboss.metadata.ear>7.0.0.Alpha5</version.org.jboss.metadata.ear>
-        <version.org.jboss.metadata.web>7.0.0.Alpha5</version.org.jboss.metadata.web>
+        <version.org.jboss.metadata.common>7.0.0.Alpha6</version.org.jboss.metadata.common>
+        <version.org.jboss.metadata.ear>7.0.0.Alpha6</version.org.jboss.metadata.ear>
+        <version.org.jboss.metadata.web>7.0.0.Alpha6</version.org.jboss.metadata.web>
         <version.org.jboss.modules.jboss-modules>1.0.0.Beta14</version.org.jboss.modules.jboss-modules>
         <version.org.jboss.msc.jboss-msc>1.0.0.Beta6</version.org.jboss.msc.jboss-msc>
         <version.org.jboss.netty>3.2.1.Final</version.org.jboss.netty>
@@ -115,6 +117,7 @@
         <version.org.jboss.osgi.spi>1.0.22</version.org.jboss.osgi.spi>
         <version.org.jboss.osgi.vfs>1.0.5</version.org.jboss.osgi.vfs>
         <version.org.jboss.remoting3.jboss-remoting>3.1.0.Beta2</version.org.jboss.remoting3.jboss-remoting>
+        <version.org.jboss.resteasy.resteasy-jaxrs>2.1.0.GA</version.org.jboss.resteasy.resteasy-jaxrs>
         <version.org.jboss.shrinkwrap.shrinkwrap>1.0.0-alpha-11</version.org.jboss.shrinkwrap.shrinkwrap>
         <version.org.jboss.slf4j.slf4j-jboss-logmanager>1.0.0.CR3</version.org.jboss.slf4j.slf4j-jboss-logmanager>
         <version.org.jboss.spec.javax.annotation.jboss-annotations-api_1.1_spec>1.0.0.Final</version.org.jboss.spec.javax.annotation.jboss-annotations-api_1.1_spec>
@@ -131,21 +134,23 @@
         <version.org.jboss.spec.javax.xml.bind.jboss-jaxb-api_2.2_spec>1.0.0.Final</version.org.jboss.spec.javax.xml.bind.jboss-jaxb-api_2.2_spec>
         <version.org.jboss.spec.javax.xml.registry.jboss-jaxr-api_1.0_spec>1.0.0.Final</version.org.jboss.spec.javax.xml.registry.jboss-jaxr-api_1.0_spec>
         <version.org.jboss.spec.javax.xml.soap.jboss-saaj-api_1.3_spec>1.0.0.Final</version.org.jboss.spec.javax.xml.soap.jboss-saaj-api_1.3_spec>
-        <version.org.jboss.spec.javax.xml.ws.jboss-jaxws-api_2.2_spec>1.0.0.Final</version.org.jboss.spec.javax.xml.ws.jboss-jaxws-api_2.2_spec>
+        <version.org.jboss.spec.javax.xml.ws.jboss-jaxws-api_2.2_spec>2.0.0.Alpha1</version.org.jboss.spec.javax.xml.ws.jboss-jaxws-api_2.2_spec>
         <version.org.jboss.staxmapper>1.0.0.Beta4</version.org.jboss.staxmapper>
         <version.org.jboss.stdio.jboss-stdio>1.0.0.CR3</version.org.jboss.stdio.jboss-stdio>
         <version.org.jboss.threads.jboss-threads>2.0.0.CR8</version.org.jboss.threads.jboss-threads>
-        <version.org.jboss.web>7.0.0.Beta2</version.org.jboss.web>
+        <version.org.jboss.web>7.0.0.Beta3</version.org.jboss.web>
         <version.org.jboss.weld.weld>1.1.0.Final</version.org.jboss.weld.weld>
         <version.org.jboss.weld.weld-api>1.1.Final</version.org.jboss.weld.weld-api>
         <version.org.jboss.ws.api>1.0.0.Alpha1</version.org.jboss.ws.api>
         <version.org.jboss.ws.common>2.0.0.Alpha2</version.org.jboss.ws.common>
         <version.org.jboss.ws.jbossws-cxf>4.0.0.Alpha1</version.org.jboss.ws.jbossws-cxf>
         <version.org.jboss.ws.spi>2.0.0.Alpha2</version.org.jboss.ws.spi>
+        <version.org.jboss.ws.jaxws-httpserver-httpspi>1.0.0.GA</version.org.jboss.ws.jaxws-httpserver-httpspi>
         <version.org.jboss.xnio.xnio-api>2.1.0.CR2</version.org.jboss.xnio.xnio-api>
         <version.org.jboss.xnio.xnio-nio>2.1.0.CR2</version.org.jboss.xnio.xnio-nio>
         <version.org.mockito>1.8.4</version.org.mockito>
         <version.org.picketbox>4.0.0.Alpha3</version.org.picketbox>
+        <version.org.scannotation>1.0.2</version.org.scannotation>
         <version.org.slf4j.jcl-over-slf4j>1.5.10</version.org.slf4j.jcl-over-slf4j>
         <version.org.slf4j.slf4j-api>1.5.10</version.org.slf4j.slf4j-api>
         <version.org.slf4j.slf4j-ext>1.5.10</version.org.slf4j.slf4j-ext>
@@ -162,6 +167,7 @@
         <module>build</module>
         <module>build-config</module>
         <module>arquillian</module>
+        <module>cli</module>
         <module>connector</module>
         <module>controller</module>
         <module>controller-client</module>
@@ -174,6 +180,7 @@
         <module>ee</module>
         <module>ejb3</module>
         <module>host-controller</module>
+        <module>jaxrs</module>
         <module>jmx</module>
         <module>logging</module>
         <module>managedbeans</module>
@@ -1258,6 +1265,12 @@
             <dependency>
                 <groupId>org.jboss.as</groupId>
                 <artifactId>jboss-as-domain-http-api</artifactId>
+	            <version>${project.version}</version>
+	        </dependency>
+
+	        <dependency>
+	            <groupId>org.jboss.as</groupId>
+                <artifactId>jboss-as-cli</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
@@ -1282,6 +1295,12 @@
             <dependency>
                 <groupId>org.jboss.as</groupId>
                 <artifactId>jboss-as-logging</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+                        
+            <dependency>
+                <groupId>org.jboss.as</groupId>
+                <artifactId>jboss-as-jaxrs</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
@@ -1426,6 +1445,19 @@
             </dependency>
 
             <dependency>
+                <groupId>com.sun.faces</groupId>
+                <artifactId>jsf-api</artifactId>
+                <version>${version.javax.faces.jsf-api}</version>
+            </dependency>
+
+            <!-- impl should have the same version as api -->
+            <dependency>
+                <groupId>com.sun.faces</groupId>
+                <artifactId>jsf-impl</artifactId>
+                <version>${version.javax.faces.jsf-api}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>com.sun.xml.bind</groupId>
                 <artifactId>jaxb-impl</artifactId>
                 <version>${version.sun.jaxb}</version>
@@ -1483,12 +1515,6 @@
             </dependency>
 
             <dependency>
-                <groupId>javax.faces</groupId>
-                <artifactId>jsf-api</artifactId>
-                <version>${version.javax.faces.jsf-api}</version>
-            </dependency>
-
-            <dependency>
                 <groupId>javax.inject</groupId>
                 <artifactId>javax.inject</artifactId>
                 <version>${version.javax.inject.javax.inject}</version>
@@ -1504,6 +1530,12 @@
                 <groupId>javax.mail</groupId>
                 <artifactId>mail</artifactId>
                 <version>${version.javax.mail.mail}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>jstl</artifactId>
+                <version>${version.javax.servlet.jstl}</version>
             </dependency>
 
             <dependency>
@@ -1528,6 +1560,12 @@
                         <artifactId>saaj-api</artifactId>
                     </exclusion>
                 </exclusions>
+            </dependency>
+
+            <dependency>
+               <groupId>jline</groupId>
+               <artifactId>jline</artifactId>
+               <version>${version.jline}</version>
             </dependency>
 
             <dependency>
@@ -2210,6 +2248,62 @@
             </dependency>
 
             <dependency>
+                <groupId>org.jboss.resteasy</groupId>
+                <artifactId>resteasy-jaxrs</artifactId>
+                <version>${version.org.jboss.resteasy.resteasy-jaxrs}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-simple</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.jboss.resteasy</groupId>
+                        <artifactId>jaxrs-api</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>commons-httpclient</groupId>
+                        <artifactId>commons-httpclient</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.apache.httpcomponents</groupId>
+                        <artifactId>httpcore</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.apache.httpcomponents</groupId>
+                        <artifactId>httpclient</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.scannotation</groupId>
+                        <artifactId>scannotation</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>net.jcip</groupId>
+                        <artifactId>jcip</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>net.jcip</groupId>
+                        <artifactId>jcip-annotations</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>javax.annotation</groupId>
+                        <artifactId>jsr250-api</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.resteasy</groupId>
+                <artifactId>async-http-servlet-3.0</artifactId>
+                <version>${version.org.jboss.resteasy.resteasy-jaxrs}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.resteasy</groupId>
+                <artifactId>resteasy-cdi</artifactId>
+                <version>${version.org.jboss.resteasy.resteasy-jaxrs}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>org.jboss.shrinkwrap</groupId>
                 <artifactId>shrinkwrap-api</artifactId>
                 <version>${version.org.jboss.shrinkwrap.shrinkwrap}</version>
@@ -2578,6 +2672,12 @@
             </dependency>
 
             <dependency>
+                <groupId>org.jboss.ws.projects</groupId>
+                <artifactId>jaxws-httpserver-httpspi</artifactId>
+                <version>${version.org.jboss.ws.jaxws-httpserver-httpspi}</version>
+            </dependency>
+
+            <dependency>
               <groupId>org.hibernate</groupId>
               <artifactId>hibernate-validator</artifactId>
                 <version>${version.org.hibernate.validator}</version>
@@ -2616,6 +2716,12 @@
                 <groupId>org.picketbox</groupId>
                 <artifactId>picketbox</artifactId>
                 <version>${version.org.picketbox}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.scannotation</groupId>
+                <artifactId>scannotation</artifactId>
+                <version>${version.org.scannotation}</version>
             </dependency>
 
             <dependency>

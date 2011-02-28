@@ -38,6 +38,7 @@
         <module name="org.jboss.as.controller"/>
         <module name="org.jboss.as.managed-beans"/>
         <module name="org.jboss.as.server"/>
+        <module name="org.jboss.as.ee"/>
         <module name="org.jboss.as.web"/>
         <module name="org.jboss.threads"/>
         <module name="org.jboss.modules"/>
@@ -48,7 +49,7 @@
         <module name="org.jboss.ws.api" />
         <module name="org.jboss.ws.common" />
         <module name="org.jboss.ws.cxf.jbossws-cxf-factories" services="import"/>
-        <module name="org.jboss.ws.cxf.jbossws-cxf-client" services="import"/>
+        <module name="org.jboss.ws.jaxws-client" services="import"/>
         <module name="org.jboss.ws.cxf.jbossws-cxf-server" services="import"/>
         <module name="org.jboss.ws.spi" />
     </dependencies>

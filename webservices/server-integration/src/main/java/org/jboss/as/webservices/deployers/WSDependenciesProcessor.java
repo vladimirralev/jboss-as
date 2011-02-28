@@ -21,11 +21,9 @@
  */
 package org.jboss.as.webservices.deployers;
 
-import java.util.List;
 
-import javax.jws.WebService;
-import javax.xml.ws.WebServiceProvider;
-
+import org.jboss.as.ee.structure.DeploymentType;
+import org.jboss.as.ee.structure.DeploymentTypeMarker;
 import org.jboss.as.server.deployment.Attachments;
 import org.jboss.as.server.deployment.DeploymentPhaseContext;
 import org.jboss.as.server.deployment.DeploymentUnit;
@@ -34,9 +32,8 @@ import org.jboss.as.server.deployment.DeploymentUnitProcessor;
 import org.jboss.as.server.deployment.module.FilterSpecification;
 import org.jboss.as.server.deployment.module.ModuleDependency;
 import org.jboss.as.server.deployment.module.ModuleSpecification;
+import org.jboss.as.web.deployment.WarMetaData;
 import org.jboss.as.webservices.util.ASHelper;
-import org.jboss.jandex.AnnotationInstance;
-import org.jboss.jandex.DotName;
 import org.jboss.jandex.Index;
 import org.jboss.modules.Module;
 import org.jboss.modules.ModuleIdentifier;
@@ -57,9 +54,10 @@ public class WSDependenciesProcessor implements DeploymentUnitProcessor {
     private static final ModuleIdentifier JAXB_IMPL = ModuleIdentifier.create("com.sun.xml.bind");
     private static final ModuleIdentifier JBOSS_WS_COMMON = ModuleIdentifier.create("org.jboss.ws.common");
     private static final ModuleIdentifier JBOSS_WS_SPI = ModuleIdentifier.create("org.jboss.ws.spi");
-    private static final ModuleIdentifier JBOSS_WS_CXF_CLIENT = ModuleIdentifier.create("org.jboss.ws.cxf.jbossws-cxf-client");
     private static final ModuleIdentifier JBOSS_WS_CXF_FACTORIES = ModuleIdentifier.create("org.jboss.ws.cxf.jbossws-cxf-factories");
     private static final ModuleIdentifier JBOSS_WS_CXF_SERVER = ModuleIdentifier.create("org.jboss.ws.cxf.jbossws-cxf-server");
+    private static final ModuleIdentifier JBOSS_WS_CXF_TRANSPORTS_HTTPSERVER = ModuleIdentifier.create("org.jboss.ws.cxf.jbossws-cxf-transports-httpserver");
+    private static final ModuleIdentifier JBOSS_WS_JAXWS_CLIENT = ModuleIdentifier.create("org.jboss.ws.jaxws-client");
     private static final ModuleIdentifier JBOSS_WEBSERVICES = ModuleIdentifier.create("org.jboss.as.webservices");
     private static final ModuleIdentifier SAAJ_IMPL = ModuleIdentifier.create("com.sun.xml.messaging.saaj");
     private static final ModuleIdentifier WSDL4J = ModuleIdentifier.create("wsdl4j.wsdl4j");
@@ -67,21 +65,19 @@ public class WSDependenciesProcessor implements DeploymentUnitProcessor {
     public void deploy(DeploymentPhaseContext phaseContext) throws DeploymentUnitProcessingException {
         final DeploymentUnit deploymentUnit = phaseContext.getDeploymentUnit();
         if (isWSDeployment(deploymentUnit)) {
-            final ModuleLoader moduleLoader = Module.getSystemModuleLoader();
+            final ModuleLoader moduleLoader = Module.getBootModuleLoader();
             final ModuleSpecification moduleSpecification = deploymentUnit.getAttachment(Attachments.MODULE_SPECIFICATION);
 
             // FIXME see if/how we can or should avoid (or at least limit) exposing the whole server stack code
             moduleSpecification.addDependency(new ModuleDependency(moduleLoader, JAXB_IMPL, false, false, true));
             moduleSpecification.addDependency(new ModuleDependency(moduleLoader, JBOSS_WS_SPI, false, false, true));
             moduleSpecification.addDependency(new ModuleDependency(moduleLoader, JBOSS_WS_COMMON, false, false, true));
-            moduleSpecification.addDependency(new ModuleDependency(moduleLoader, JBOSS_WS_CXF_CLIENT, false, false, true));
+            moduleSpecification.addDependency(new ModuleDependency(moduleLoader, JBOSS_WS_JAXWS_CLIENT, false, false, true));
             moduleSpecification.addDependency(new ModuleDependency(moduleLoader, JBOSS_WS_CXF_FACTORIES, false, false, true));
+            moduleSpecification.addDependency(applyCXFExtensionImportFilters(new ModuleDependency(moduleLoader, JBOSS_WS_CXF_TRANSPORTS_HTTPSERVER, false, false, true)));
             moduleSpecification.addDependency(new ModuleDependency(moduleLoader, JBOSS_WS_CXF_SERVER, false, false, true));
 
-            ModuleDependency apacheCxfDep = new ModuleDependency(moduleLoader, APACHE_CXF, false, false, true);
-            apacheCxfDep.getImportFilters().add(new FilterSpecification(PathFilters.match("META-INF/cxf"), true)); //to include bus extensions in META-INF
-            apacheCxfDep.getImportFilters().add(new FilterSpecification(PathFilters.match("META-INF/spring.*"), true));
-            moduleSpecification.addDependency(apacheCxfDep);
+            moduleSpecification.addDependency(applyCXFExtensionImportFilters(new ModuleDependency(moduleLoader, APACHE_CXF, false, false, true)));
             moduleSpecification.addDependency(new ModuleDependency(moduleLoader, APACHE_XALAN, false, false, true));
             moduleSpecification.addDependency(new ModuleDependency(moduleLoader, APACHE_XERCES, false, false, true));
 
@@ -91,24 +87,31 @@ public class WSDependenciesProcessor implements DeploymentUnitProcessor {
         }
     }
 
+    private static ModuleDependency applyCXFExtensionImportFilters(ModuleDependency dep) {
+        dep.getImportFilters().add(new FilterSpecification(PathFilters.match("META-INF/cxf"), true)); //to include bus extensions in META-INF
+        dep.getImportFilters().add(new FilterSpecification(PathFilters.match("META-INF/spring.*"), true));
+        return dep;
+    }
+
     /**
-     * Look for @WebService / @WebServiceProvider annotated classes only as the jbossweb metadata is not available yet here
-     * TODO: to be improved (jaxrpc deployments are skipped)
+     * Determines whether the provided deployment unit is a WS endpoint deployment or not;
+     * currently finds JSE endpoints only and relies upon endpoints declared in web.xml only
+     * (merged jbossweb metadata is not available yet at this phase)
+     * TODO: to be improved (jaxrpc deployments are skipped, ejb3 enpoints are skipped, web3 servlets are skipped)
      *
      * @param unit
      * @return
      */
     private boolean isWSDeployment(DeploymentUnit unit) {
-        final DotName webserviceAnnotation = DotName.createSimple(WebService.class.getName());
-        final DotName webserviceProviderAnnotation = DotName.createSimple(WebServiceProvider.class.getName());
-        final Index index = ASHelper.getRootAnnotationIndex(unit);
-        if (index == null) {
-            // this should only happen with ear modules
+        if (!DeploymentTypeMarker.isType(DeploymentType.WAR, unit)) {
             return false;
         }
-        final List<AnnotationInstance> wsAnnList = index.getAnnotations(webserviceAnnotation);
-        final List<AnnotationInstance> wsProvAnnList = index.getAnnotations(webserviceProviderAnnotation);
-        return (wsAnnList != null && wsAnnList.size() > 0) || (wsProvAnnList != null && wsProvAnnList.size() > 0);
+        final Index index = ASHelper.getRootAnnotationIndex(unit);
+        final WarMetaData warMetaData = ASHelper.getOptionalAttachment(unit, WarMetaData.ATTACHMENT_KEY);
+        if(warMetaData == null || warMetaData.getWebMetaData() == null) {
+            return false;
+        }
+        return (ASHelper.selectWebServiceServlets(index, warMetaData.getWebMetaData().getServlets(), true).size() > 0);
     }
 
     public void undeploy(final DeploymentUnit context) {
