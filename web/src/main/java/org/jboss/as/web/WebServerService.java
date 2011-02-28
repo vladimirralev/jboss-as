@@ -38,6 +38,7 @@ import org.jboss.msc.service.StartContext;
 import org.jboss.msc.service.StartException;
 import org.jboss.msc.service.StopContext;
 import org.jboss.msc.value.InjectedValue;
+import org.mobicents.servlet.sip.core.SipApplicationDispatcherImpl;
 import org.mobicents.servlet.sip.startup.SipStandardEngine;
 import org.mobicents.servlet.sip.startup.SipStandardService;
 
@@ -82,6 +83,9 @@ class WebServerService implements WebServer, Service<WebServer> {
         catalina.setServer(server);
 
         final SipStandardService service = new SipStandardService();
+        service.setSipApplicationDispatcherClassName(SipApplicationDispatcherImpl.class.getName());
+        service.setConcurrencyControlMode("None");
+        service.setCongestionControlCheckingInterval(-1);
         service.setName(JBOSS_WEB);
         service.setServer(server);
         server.addService(service);

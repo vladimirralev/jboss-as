@@ -102,7 +102,7 @@ class WebSubsystemAdd implements ModelAddOperationHandler, BootOperationHandler,
                                 .setInitialMode(Mode.ON_DEMAND)
                                 .install();
                     } catch (Throwable t) {
-                        throw new OperationFailedException(new ModelNode().set(t.getLocalizedMessage()));
+                        throw new OperationFailedException(t, new ModelNode().set(t.getLocalizedMessage()));
                     }
 
                     final SharedWebMetaDataBuilder sharedWebBuilder = new SharedWebMetaDataBuilder(config.clone());
