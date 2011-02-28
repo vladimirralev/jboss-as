@@ -115,7 +115,13 @@ class WebConnectorAdd implements ModelAddOperationHandler {
             context.getRuntimeContext().setRuntimeTask(new RuntimeTask() {
                 public void execute(RuntimeTaskContext context) throws OperationFailedException {
                     final boolean enabled = operation.hasDefined(ENABLED) ? operation.get(ENABLED).asBoolean() : true;
-                    final WebConnectorService service = new WebConnectorService(operation.require(PROTOCOL).asString(), operation.get(SCHEME).asString());
+                    WebConnectorService serv = null;
+                    if(operation.require(PROTOCOL).asString().equals("http")) {
+                       serv = new WebConnectorService(operation.require(PROTOCOL).asString(), operation.get(SCHEME).asString());
+                    } else {
+                        serv = new SipConnectorService(operation.require(PROTOCOL).asString(), operation.get(SCHEME).asString());
+                    }
+                    final WebConnectorService service = serv;
                     if (operation.hasDefined(SECURE)) service.setSecure(operation.get(SECURE).asBoolean());
                     if (operation.hasDefined(ENABLE_LOOKUPS))
                         service.setEnableLookups(operation.get(ENABLE_LOOKUPS).asBoolean());

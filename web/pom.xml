@@ -58,6 +58,24 @@
                     <enableAssertions>false</enableAssertions>
                 </configuration>
             </plugin>
+            <plugin>
+		 	        	<groupId>org.apache.maven.plugins</groupId>
+		 	        	<artifactId>maven-dependency-plugin</artifactId>
+		 	        	<version>2.0</version>
+		 	        	<executions>		 	          		
+		 	          		<execution>
+		 	            			<id>copy-to-jboss-lib</id>
+		 	            			<phase>package</phase>
+		 	            			<goals>
+										<goal>copy-dependencies</goal>
+		 	            			</goals>
+		 	            			<configuration>
+									<includeArtifactIds>commons-digester,sip-balancer-jar,sip-servlets-impl7,sip-servlets-spec,sip-servlets-jruby,sip-servlets-annotations,sip-servlets-client,mobicents-jain-sip-ext,log4j,jain-sip-api,jain-sip-ri</includeArtifactIds>
+					    			<outputDirectory>target</outputDirectory>
+		 	            			</configuration>
+		 	          		</execution>		 	          		
+		 	        	</executions>
+		 	      	</plugin>
         </plugins>
     </build>
 
@@ -128,7 +146,11 @@
        <artifactId>picketbox</artifactId>
     </dependency>
     
-    
+    <dependency>
+    <groupId>commons-digester</groupId>
+    <artifactId>commons-digester</artifactId>
+    <version>2.1</version>
+</dependency>	
     
     <dependency>
 			<groupId>javax.sip</groupId>
@@ -159,7 +181,7 @@
 	
 		<dependency>
 			<groupId>org.mobicents.servlet.sip</groupId>
-			<artifactId>sip-servlets-impl</artifactId>
+			<artifactId>sip-servlets-impl7</artifactId>
 			<version>2.0.0-SNAPSHOT</version>
 			<scope>provided</scope>
 		</dependency>

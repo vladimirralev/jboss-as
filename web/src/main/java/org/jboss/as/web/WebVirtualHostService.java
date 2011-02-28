@@ -33,6 +33,8 @@ import org.jboss.msc.service.StartException;
 import org.jboss.msc.service.StopContext;
 import org.jboss.msc.value.InjectedValue;
 import org.jboss.web.rewrite.RewriteValve;
+import org.mobicents.servlet.sip.startup.SipHostConfig;
+import org.mobicents.servlet.sip.startup.SipStandardHost;
 
 /**
  * Service creating and registering a virtual host.
@@ -59,7 +61,9 @@ class WebVirtualHostService implements Service<Host> {
 
     /** {@inheritDoc} */
     public synchronized void start(StartContext context) throws StartException {
-        final StandardHost host = new StandardHost();
+        final SipStandardHost host = new SipStandardHost();
+        host.setConfigClass(SipHostConfig.class.getName());
+        // TODO: context config //host.setContextClass(Sip)
         host.setAppBase(tempPathInjector.getValue());
         host.setName(name);
         for(final String alias : aliases) {
